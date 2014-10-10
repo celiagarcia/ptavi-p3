@@ -7,6 +7,7 @@ from xml.sax import make_parser
 from xml.sax.handler import ContentHandler
 import smallsmilhandler
 import sys
+import os
 
 
 if __name__ == "__main__":
@@ -24,6 +25,19 @@ if __name__ == "__main__":
     parser.parse(fich)
     lista = small.get_tags()
                     
+    #de romoto a local                
+                    
+    for diccionario in lista:              
+        for etiqueta in diccionario:
+            if diccionario[etiqueta].find("http://") == 0:
+                recurso = diccionario[etiqueta]
+                os.system("wget -q " + recurso)
+                nuevo = diccionario[etiqueta].split('/')[-1]
+                diccionario[etiqueta] = nuevo
+
+            
+                    
+    #imprimir lista                
     for diccionario in lista:
         print diccionario["name"],
         for etiqueta in diccionario:
