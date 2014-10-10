@@ -9,8 +9,6 @@ import smallsmilhandler
 import sys
 
 
-
-
 if __name__ == "__main__":
 
     parser = make_parser()
@@ -24,4 +22,18 @@ if __name__ == "__main__":
 	    raise SystemExit
 	        
     parser.parse(fich)
-    print small.get_tags()
+    lista = small.get_tags()
+                    
+    for diccionario in lista:
+        print diccionario["name"],
+        for etiqueta in diccionario:
+            if diccionario[etiqueta] and etiqueta != "name":
+                 print "\t" + etiqueta + '="' + diccionario[etiqueta] + '"',
+        print            
+            
+            
+            
+            
+            
+            
+
