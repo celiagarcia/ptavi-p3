@@ -16,7 +16,7 @@ class SmallSMILHandler(ContentHandler):
         self.attributosD = {
             'root-layout': ['width', 'height'],
             'region': ['id', 'top', 'left'],
-            'img': ['scr', 'region', 'begin', 'dur'],
+            'img': ['src', 'region', 'begin', 'dur'],
             'audio': ['src', 'begin', 'dur'],
             'textstream': ['src', 'region']
             }
