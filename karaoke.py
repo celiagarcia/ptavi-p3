@@ -24,9 +24,16 @@ if __name__ == "__main__":
 	        
     parser.parse(fich)
     lista = small.get_tags()
-                    
+    
+    #imprimir lista                
+    for diccionario in lista:
+        print diccionario["name"],
+        for etiqueta in diccionario:
+            if diccionario[etiqueta] and etiqueta != "name":
+                 print "\t" + etiqueta + '="' + diccionario[etiqueta] + '"',
+        print            
+                         
     #de romoto a local                
-                    
     for diccionario in lista:              
         for etiqueta in diccionario:
             if diccionario[etiqueta].find("http://") == 0:
@@ -34,9 +41,7 @@ if __name__ == "__main__":
                 os.system("wget -q " + recurso)
                 nuevo = diccionario[etiqueta].split('/')[-1]
                 diccionario[etiqueta] = nuevo
-
-            
-                    
+                
     #imprimir lista                
     for diccionario in lista:
         print diccionario["name"],
